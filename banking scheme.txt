@@ -1,0 +1,38 @@
+    public static void main(String[] args) {
+
+        
+        Scanner initDepo = new Scanner(System.in);
+        Scanner numBanks = new Scanner(System.in);
+        System.out.print("Key in the initial deposit into Bank-1: RM");
+        double initialDeposit = initDepo.nextDouble();
+
+        System.out.print("Key in the number of banks to simulate: ");
+        int numberOfBanks = numBanks.nextInt();
+
+        System.out.println("Simulating for initial deposit of RM" + initialDeposit + " for " + numberOfBanks + "-banks...");
+                
+        double totalLent = 0.00;
+        double currLent = 0.9 * initialDeposit;
+        double currDepo = initialDeposit;
+        
+        System.out.println();
+        
+        for(int i=1; i<=numberOfBanks; i++){
+            // Check to see if it's the final bank i.e. B_N <-- teda kaitan parti politik iya
+            if(i==numberOfBanks){
+                currLent = 0;
+            }
+            System.out.print("Money deposited into Bank-" + i + " = RM" + String.format("%.2f", currDepo) + ". Can lend = RM" + String.format("%.2f", currLent) + ".");
+            System.out.println("");
+            // Total that is already lent out...
+            totalLent = totalLent + currLent;
+            // How much can be deposited into the next bank? 
+            currDepo = currLent;
+            currLent = 0.9 * currDepo;           
+            
+         }
+        //Displaying total amount lent (2 decimal places)
+        System.out.print("Total amount lent = RM" + String.format("%.2f", totalLent) + ".");
+       
+    }
+    
